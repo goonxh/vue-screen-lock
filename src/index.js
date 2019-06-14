@@ -36,7 +36,6 @@ ScreenLock.install = function (Vue) {
                         Array.from(document.querySelectorAll('.sl-lock-item')).forEach(item => {
                             item.onmousemove = () => {
                                 if (Array.from(item.classList).findIndex(cl => cl === 'hovered') === -1) {
-                                    console.log(item.getAttribute('data-index'));
                                     item.classList.add('hovered');
                                     password.push(item.getAttribute('data-index'));
                                 }

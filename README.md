@@ -1,29 +1,47 @@
 # vue-screen-lock
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
+```js
+npm i vue-screen-lock -D
 ```
 
-### Compiles and minifies for production
-```
-npm run build
+### In your project:
+
+```js
+import vueScreenLock from 'vue-screen-lock/src/index';
+import 'vue-screen-lock/src/lock.css';
+Vue.use(vueScreenLock);
 ```
 
-### Run your tests
-```
-npm run test
+Use the component:
+
+```vue
+<template>
+    <div id="app">
+        <p @click='lock()'>Click me</p>
+    </div>
+</template>
+
+<script>
+export default {
+    data() {
+        return  {
+        }
+    },
+    created() {
+    },
+    methods: {
+        lock() {
+            this.$screenLock('lock', {
+                width: '300px', // 解锁区域宽度
+                height: '300px', // 解锁区域高度
+                firstLock: window.sessionStorage.getItem('PASSWORD')?false:true,  // 检查是否是第一次进入锁屏页面
+            });
+        }
+    }
+}
+</script>
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
+## Demo
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+[demo](https://goonxh.github.io/vue-screen-lock/)
