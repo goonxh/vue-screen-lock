@@ -49,8 +49,10 @@ ScreenLock.install = function (Vue) {
                         })
                         let hoveredItemList = Array.from(document.querySelectorAll('.hovered'));
                         if (option.firstLock) { // 判断是否是第一次进入锁屏界面
-                            window.sessionStorage.setItem('PASSWORD', password);
-                            window.location.reload();
+                            if (password.length>0) {
+                                window.sessionStorage.setItem('PASSWORD', password);
+                                window.location.reload();
+                            }
                         } else if (hoveredItemList.length) { // 判断有没有输入手势
                             let _password = window.sessionStorage.getItem('PASSWORD');
                             if (password.join(',') === _password) { // 解锁成功
@@ -87,10 +89,10 @@ ScreenLock.install = function (Vue) {
                             }),
                             h('p', {
                                 domProps: {
-                                    innerHTML: !option.firstLock ? this.passwordIsTrue? '请解锁' : '手势错误': '',
+                                    innerHTML: !option.firstLock ? this.passwordIsTrue ? '请解锁' : '手势错误' : '',
                                 },
                                 style: {
-                                    color: this.passwordIsTrue?'':'#EB7A77',
+                                    color: this.passwordIsTrue ? '' : '#EB7A77',
                                     padding: '20px',
                                 },
                             }),
