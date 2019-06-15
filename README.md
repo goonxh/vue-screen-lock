@@ -7,7 +7,7 @@ npm i vue-screen-lock -D
 ### In your project:
 
 ```js
-import vueScreenLock from 'vue-screen-lock/src/index';
+import vueScreenLock from 'vue-screen-lock';
 import 'vue-screen-lock/src/lock.css';
 Vue.use(vueScreenLock);
 ```
